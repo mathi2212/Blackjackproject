@@ -18,7 +18,7 @@ function buildDeck() {
   
     for (let i = 0; i < types.length; i++) {
         for (let j = 0; j < values.length; j++) {
-            deck.push(values[j] + "-" + types[i]); // A-C -> K-C, A-D -> K-D
+            deck.push(values[j] + "-" + types[i]); // gets element from value array and types array and "joins" them together to "create" a card that matches the names of images.
         }
     }
     console.log(deck);
