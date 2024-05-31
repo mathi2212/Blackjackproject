@@ -1,8 +1,9 @@
-let scoreP = 0; // Initialize player score
-let scoreD = 0; // Initialize dealer score
+let scoreP = 0; 
+let scoreD = 0; 
 let hidden = true;
 let playerHand = [];
 let dealerHand = [];
+let deck = [];
 
 window.onload = function() {
     buildDeck();
@@ -85,7 +86,7 @@ function calculateHandValue(hand) {
         }
     }
 
-    // Adjust for Aces
+   
     if (hasAce) {
         if (totalValue + 11 <= 21) {
             totalValue += 11;
@@ -101,6 +102,11 @@ function hit() {
     playerHand.push(deck.pop());
     displayCards("player", playerHand);
     scoreP = calculateHandValue(playerHand);
+
+    
+    if (scoreP > 21) {
+        endGame();
+    }
 }
 
 function stand() {
@@ -113,7 +119,7 @@ function stand() {
         displayCards("dealer", dealerHand);
     }
 
-    // End the game and determine the winner
+    
     endGame();
 }
 
@@ -122,9 +128,11 @@ function revealDealerCard() {
     displayCards("dealer", dealerHand);
 }
 
-
 function endGame() {
+    document.getElementById("hit").disabled = true;
+    document.getElementById("stand").disabled = true;
     let message = "";
+
     if (scoreP > 21) {
         message = "Player busts! Dealer wins!";
     } else if (scoreD > 21) {
@@ -137,5 +145,30 @@ function endGame() {
         message = "It's a tie!";
     }
 
-    alert(message);
+    document.getElementById("message").innerHTML = message;
+
+    // Reset the game after a delay to allow the player to see the result
+    setTimeout(resetGame, 3000); // 3 seconds delay
+}
+
+
+
+
+function resetGame() {
+    scoreP = 0;
+    scoreD = 0;
+    hidden = true;
+    playerHand = [];
+    dealerHand = [];
+    deck = [];
+
+    document.getElementById("player-hand").innerHTML = "";
+    document.getElementById("dealer-hand").innerHTML = "";
+    document.getElementById("message").innerHTML = "";
+
+    buildDeck();
+    shuffleDeck();
+    startGame();
+    document.getElementById("hit").disabled = false;
+    document.getElementById("stand").disabled = false;
 }

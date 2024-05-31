@@ -5,36 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="project.css">
-  <title>Document</title>
+  <title>Blackjack Game</title>
 </head>
 <body>
-
-
-   <h2>Dealer: <span id="dealer-sum"></span></h2>
+  <div class="game-container">
+    <div class="player-section">
+      <h2>Dealer: <span id="dealer-sum"></span></h2>
+      <div id="dealer-hand"></div>
+    </div>
     
-           <div id="dealer-hand"></div>
-       
-       </div>
+    <div class="dealer-section">
+      <h2>You: <span id="your-sum"></span></h2>
+      <div id="player-hand"></div>
+    </div>
 
+    <div class="controls">
+      <button onclick="hit()" id="hit">Hit</button>
+      <button onclick="stand()" id="stand">Stay</button>
+    </div>
 
-       <h2>You: <span id="your-sum"></span></h2>
-       <div id="player-hand"></div>
-    
-       
-
-
-       <br>
-       <button onclick="hit()" id="hit">Hit</button>
-       <button onclick="stand()" id="stand">Stay</button>
-       <p id="message"></p>
-       <div id="player-hand"></div>
-    
-
-
+    <p id="message"></p>
+  </div>
 
   <script src="project.js"></script>
 </body>
 </html>
-<html>
-
-
