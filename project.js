@@ -105,6 +105,7 @@ function hit() {
 
     
     if (scoreP > 21) {
+        revealDealerCard()
         endGame();
     }
 }
